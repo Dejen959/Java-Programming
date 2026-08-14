@@ -1,0 +1,75 @@
+package ethioprogramming;
+import java.util.Scanner;
+public class StudentTest{
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        Student s1 = new Student("no Name 1", "no Id 1","not determined 1", 0, "not specified 1", "not started 1");
+        Student s2 = new Student("no Name 2", "no Id 2","not determined 2", 0, "not specified 2", "not started 2");
+        Student s3 = new Student("no Name 3", "no Id 3","not determined 3", 0, "not specified 3", "not started 3");
+        Student s4 = new Student("no Name 4", "no Id 4","not determined 4", 0, "not specified 4", "not started 4");
+        Student s5 = new Student("no Name 5", "no Id 5","not determined 5", 0, "not specified 5", "not started 5");
+
+        System.out.printf("%5s%10s%17s%10s%15s%10s%n","Name","ID","Gender","Age","Department","Year");
+        displayAll(s1);
+        displayAll(s2);
+        displayAll(s3);
+        displayAll(s4);
+        displayAll(s5);
+
+        String name, id, gender, dept, year;
+        int age, c;
+        System.out.println("press 1: For add student information");
+        System.out.println("press 2: For display student information");
+        System.out.println("press 3: For exit from program");
+        System.out.print("Enter your choice: ");
+        c =  in.nextInt();
+        while(c != 3){
+            switch(c){
+                case 1:
+                    System.out.println("Add student information");
+                    in.nextLine();
+                    System.out.print("Enter name: ");
+                    name = in.nextLine();
+                    System.out.print("Enter id: ");
+                    id = in.nextLine();
+                    System.out.print("Enter gender: ");
+                    gender = in.nextLine();
+                    System.out.print("Enter your age: ");
+                    age = in.nextInt();
+                    System.out.print("Enter your department: ");
+                    in.nextLine();
+                    dept = in.nextLine();
+                    System.out.println("Enter your year: ");
+                    year = in.nextLine();
+                    addStudent(name, id, gender, age, dept,year, s1);
+                    break;
+                case 2:
+                    System.out.printf("%5s%10s%12s%7s%20s%15s%n","Name","ID","Gender","Age","Department","Year");
+                    displayAll(s1);
+                    break;
+                default:
+                    System.out.println("Invalid input");
+                    break;
+            }
+            System.out.println("press 1: For add student information");
+            System.out.println("press 2: For display student information");
+            System.out.println("press 3: For exit from program");
+            System.out.print("Enter your choice: ");
+            c =  in.nextInt();
+        }
+    }
+
+    public static void addStudent(String name, String id, String gender, int age, String dept, String year, Student s){
+        s.setName(name);
+        s.setId(id);
+        s.setGender(gender);
+        s.setAge(age);
+        s.setDept(dept);
+        s.setYear(year);
+    }
+    public static void displayAll(Student s){
+        System.out.printf("%5s%8s%12s%7d%20s%15s%n",s.getName(),s.getId(),s.getGender(),s.getAge(),s.getDept(),s.getYear());
+    }
+}
+
+
